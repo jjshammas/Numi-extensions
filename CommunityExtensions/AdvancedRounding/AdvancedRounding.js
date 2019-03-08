@@ -14,9 +14,9 @@ ROUNDING_METHODS.forEach(function(method, idx) {
 });
 
 numi.addFunction({ "id": "roundTo", "phrases": "roundTo" }, function(values) {
-	const number = values[0].double || 0;
-	const precision = values[1].double || 0;
-	const roundMethod = ROUNDING_METHODS[values[2] ? values[2].double : 0];
+	const number = values[0].double;
+	const precision = values[1] ? values[1].double : 0;
+	const roundMethod = values[2] ? ROUNDING_METHODS[values[2].double] : "half_up";
 
 	const roundableNumber = number * Math.pow(10, precision);
 	let roundedInteger = 0;
